@@ -2,6 +2,8 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Home from '../screens/Home';
+import {View} from 'react-native';
 // import ContactsList from '../screens/Contacts';
 
 const Tab = createBottomTabNavigator();
@@ -40,11 +42,8 @@ const TabNavigator = () => {
           color: 'white',
         },
       })}>
-      <Tab.Screen
-        name="Trang chủ"
-        component={require('../screens/Home').default}
-        options={{title: 'Trang chủ'}}
-      />
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Profile" component={() => <View></View>} />
     </Tab.Navigator>
   );
 };

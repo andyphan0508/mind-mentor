@@ -25,36 +25,25 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {NavigationContainer} from '@react-navigation/native';
 
-const Stack = createNativeStackNavigator();
-
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
 function App(): React.JSX.Element {
+  const Stack = createNativeStackNavigator();
   const screens = RouteParams;
 
   return (
     <SafeAreaView>
       <NavigationContainer>
-        <StatusBar />
         <Stack.Navigator
           screenOptions={({route}) => ({
-            headerShown: route.name !== 'Home',
+            headerShown: true,
+            headerTitle: route.name,
             headerBackTitleVisible: true,
-            headerStyle: {
-              backgroundColor: '#18538C',
-            },
-            headerTitleStyle: {
-              color: 'white',
-            },
-            headerBackTitleStyle: {
-              color: 'white',
-            },
-            headerTintColor: 'white',
           })}>
-          {screens.map(({name, component}) => (
-            <Stack.Screen key={name} name={name} component={component} />
+          {screens.map(({name, component, title}) => (
+            <Stack.Screen key={name} name={title} component={component} />
           ))}
         </Stack.Navigator>
       </NavigationContainer>
